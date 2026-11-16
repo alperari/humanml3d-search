@@ -1,4 +1,4 @@
-"""Lexical matching, exact cosine ranking, and mirror-aware motion unions."""
+"""Lexical matching, exact cosine ranking and overlap comparison of motions."""
 
 from collections import defaultdict
 import csv
@@ -80,30 +80,34 @@ def semantic_matches(config, rows, activity_id, activity, model, matrix, text_in
             query_number = int(np.argmax(values))
             evidence.append(dict(row, exercise_id=activity_id, method="semantic", cosine_similarity=float(values[query_number]),
                                  query_id=query_number + 1, query=activity["semantic_queries"][query_number], query_similarities=values.tolist()))
-    return results, evidence, {row["motion_id"]: {key: row[key] for key in SEMANTIC_COLUMNS} for row in ranked}
+    return results, evidence
 
 
-def combine(activity_id, activity, lexical, semantic, ranking):
-    left, right = {r["motion_id"]: r for r in lexical}, {r["motion_id"]: r for r in semantic}
-    require(len(left) == len(lexical) and len(right) == len(semantic), "Retrieval contains duplicate motion IDs")
-    ids = set(left) | set(right)
-    records, groups = [], defaultdict(list)
-    for motion_id in sorted(ids, key=lambda m: ranking[m]["rank"]):
-        sample = ranking[motion_id]
-        record = {key: sample[key] for key in COMMON_COLUMNS}
-        record.update(methods=[method for method, source in (("lexical", left), ("semantic", right)) if motion_id in source],
-                      lexical=left.get(motion_id), semantic=right.get(motion_id), best_semantic_caption=sample)
-        records.append(record)
-        groups[sample["base_motion_id"]].append(motion_id)
-    def counts(a, b):
-        return {"lexical": len(a), "semantic": len(b), "overlap": len(a & b), "lexical_only": len(a - b), "semantic_only": len(b - a), "union": len(a | b)}
-    mirror_groups = [{"base_motion_id": base, "motion_ids": sorted(values),
-                      "representative_motion_id": base if base in values else sorted(values)[0]}
-                     for base, values in sorted(groups.items())]
-    return {"schema_version": 1, "exercise_id": activity_id, "label": activity["label"], "records": records, "mirror_groups": mirror_groups,
-            "counts": {"motion_ids": counts(set(left), set(right)),
-                       "mirror_adjusted": counts({r["base_motion_id"] for r in lexical}, {r["base_motion_id"] for r in semantic})},
-            "count_interpretation": "Mirror-adjusted counts are distinct original HumanML3D IDs, not proven distinct people or raw recordings"}
+def result_set(activity_id, activity, method, rows):
+    ids = {row["motion_id"] for row in rows}
+    require(len(ids) == len(rows), f"{method} retrieval contains duplicate motion IDs")
+    return {"schema_version": 2, "exercise_id": activity_id, "label": activity["label"], "method": method, "records": rows,
+            "counts": {"motion_ids": len(ids), "base_motion_ids": len({row["base_motion_id"] for row in rows})},
+            "count_interpretation": "Base IDs group mirrored counterparts within this method, not proven distinct people or raw recordings"}
+
+
+def overlap_results(activity_id, activity, lexical, semantic):
+    left, right = {row["motion_id"]: row for row in lexical}, {row["motion_id"]: row for row in semantic}
+    shared_ids = left.keys() & right.keys()
+    records = [dict({key: right[motion][key] for key in COMMON_COLUMNS}, lexical=left[motion], semantic=right[motion])
+               for motion in sorted(shared_ids, key=lambda motion: right[motion]["rank"])]
+    groups = {}
+    for method, rows in (("lexical", lexical), ("semantic", semantic)):
+        groups[method] = defaultdict(list)
+        for row in rows:
+            groups[method][row["base_motion_id"]].append(row["motion_id"])
+    shared_bases = groups["lexical"].keys() & groups["semantic"].keys()
+    return {"schema_version": 2, "exercise_id": activity_id, "label": activity["label"], "method": "overlap", "records": records,
+            "counts": {"motion_ids": len(shared_ids), "base_motion_ids": len(shared_bases)},
+            "exact_match_base_motion_ids": len({row["base_motion_id"] for row in records}),
+            "mirror_overlap_groups": [{"base_motion_id": base, "lexical_motion_ids": sorted(groups["lexical"][base]),
+                                       "semantic_motion_ids": sorted(groups["semantic"][base])} for base in sorted(shared_bases)],
+            "count_interpretation": "Records are exact motion-ID matches. Base-ID overlap is computed after grouping mirrors separately in each method; a base-only match need not share an exact ID."}
 
 
 def write_csv(path, rows, columns):
@@ -121,6 +125,19 @@ def write_csv(path, rows, columns):
             temporary.unlink(missing_ok=True)
 
 
+def write_jsonl(path, rows):
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent, prefix=".evidence-", delete=False) as stream:
+            temporary = Path(stream.name)
+            for row in sorted(rows, key=lambda r: (r["motion_id"], r["line_number"])):
+                stream.write(json.dumps(row, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n")
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def search(config, activity_id, offline=False, split="all"):
     activities, activity_facts = config.activities()
     require(activity_id in activities, f"Unknown activity {activity_id}; choices: {', '.join(activities)}")
@@ -130,18 +147,23 @@ def search(config, activity_id, offline=False, split="all"):
     rows = all_rows if split == "all" else [row for row in all_rows if row["split"] == split]
     activity = activities[activity_id]
     lexical, lexical_evidence = lexical_matches(rows, activity_id, activity)
-    semantic, semantic_evidence, ranking = semantic_matches(config, rows, activity_id, activity, model, matrix, text_index)
-    combined = combine(activity_id, activity, lexical, semantic, ranking)
+    semantic, semantic_evidence = semantic_matches(config, rows, activity_id, activity, model, matrix, text_index)
+    results = {"lexical": result_set(activity_id, activity, "lexical", lexical),
+               "semantic": result_set(activity_id, activity, "semantic", semantic)}
+    overlap = overlap_results(activity_id, activity, lexical, semantic)
     settings = {"index_signature": index_report["index_signature"], "embedding_signature": embedding_report["embedding_signature"],
                 "exercise_id": activity_id, "activity": activity, "top_k": config.top_k, "split": split,
                 "ranking": "Maximum normalized cosine over activity queries and each motion's original captions",
                 "tie_break": "Descending score, ascending motion ID; first caption line/query wins exact ties",
-                "semantic_unit": "Distinct motion IDs; mirrored IDs can occupy separate top-k positions", "code_sha256": code_facts()}
+                "semantic_unit": "Distinct motion IDs; mirrored IDs can occupy separate top-k positions",
+                "result_schema_version": 2, "code_sha256": code_facts()}
     run_signature = digest(settings)
     directory = config.protect(config.output_root / activity_id / run_signature[:16])
     directory.mkdir(parents=True, exist_ok=True)
-    report = {"schema_version": 1, "stage": "caption_search", "status": "running", "created_at_utc": now(), "run_signature": run_signature,
-              "settings": settings, "dataset_root": str(config.dataset_root), "counts": combined["counts"],
+    counts = {method: value["counts"] for method, value in results.items()}
+    counts["overlap"] = overlap["counts"]
+    report = {"schema_version": 2, "stage": "caption_search", "status": "running", "created_at_utc": now(), "run_signature": run_signature,
+              "settings": settings, "dataset_root": str(config.dataset_root), "counts": counts,
               "environment": environment(), "inputs": {"index_manifest": fingerprint(config.cache_root / "index.json"),
                                                          "activities": activity_facts, "embedding_manifest": fingerprint(Path(embedding_report["vectors"]["path"]).parent / "manifest.json")},
               "model": embedding_report["model"], "outputs": None, "visual_review": "pending"}
@@ -149,24 +171,18 @@ def search(config, activity_id, offline=False, split="all"):
     try:
         write_csv(directory / "lexical_results.csv", lexical, LEXICAL_COLUMNS)
         write_csv(directory / "semantic_results.csv", semantic, SEMANTIC_COLUMNS)
-        atomic_json(directory / "combined_results.json", combined)
-        evidence = sorted(lexical_evidence + semantic_evidence, key=lambda r: (r["method"], r["motion_id"], r["line_number"]))
-        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=directory, prefix=".evidence-", delete=False) as stream:
-            temporary = Path(stream.name)
-            try:
-                for row in evidence:
-                    stream.write(json.dumps(row, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n")
-            except BaseException:
-                temporary.unlink(missing_ok=True)
-                raise
-        os.replace(temporary, directory / "caption_matches.jsonl")
-        report["outputs"] = {name: fingerprint(directory / name) for name in
-                             ("lexical_results.csv", "semantic_results.csv", "combined_results.json", "caption_matches.jsonl")}
+        for method, evidence in (("lexical", lexical_evidence), ("semantic", semantic_evidence)):
+            atomic_json(directory / f"{method}_results.json", results[method])
+            write_jsonl(directory / f"{method}_matches.jsonl", evidence)
+        atomic_json(directory / "overlap_results.json", overlap)
+        report["outputs"] = {name: fingerprint(directory / name) for method in results for name in
+                             (f"{method}_results.csv", f"{method}_results.json", f"{method}_matches.jsonl")}
+        report["outputs"]["overlap_results.json"] = fingerprint(directory / "overlap_results.json")
         report["status"] = "passed"
     except Exception as exc:
         report["status"], report["error"] = "failed", str(exc)
         raise
     finally:
         atomic_json(directory / "run_manifest.json", report)
-    print(json.dumps({"run_directory": str(directory), "counts": combined["counts"]}, indent=2), flush=True)
+    print(json.dumps({"run_directory": str(directory), "counts": counts}, indent=2), flush=True)
     return directory

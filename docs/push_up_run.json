@@ -1,25 +1,27 @@
 {
   "counts": {
-    "mirror_adjusted": {
-      "lexical": 43,
-      "lexical_only": 29,
-      "overlap": 14,
-      "semantic": 25,
-      "semantic_only": 11,
-      "union": 54
+    "lexical": {
+      "base_motion_ids": 43,
+      "motion_ids": 86
     },
-    "motion_ids": {
-      "lexical": 86,
-      "lexical_only": 58,
-      "overlap": 28,
-      "semantic": 50,
-      "semantic_only": 22,
-      "union": 108
+    "overlap": {
+      "base_motion_ids": 14,
+      "motion_ids": 28
+    },
+    "semantic": {
+      "base_motion_ids": 25,
+      "motion_ids": 50
     }
   },
   "csv_rows": {
-    "lexical": 86,
-    "semantic": 50
+    "lexical": {
+      "distinct_motion_ids": 86,
+      "rows": 86
+    },
+    "semantic": {
+      "distinct_motion_ids": 50,
+      "rows": 50
+    }
   },
   "dependency_locks": {
     "conda-linux-64.lock.txt": {
@@ -32,10 +34,6 @@
       "path": "/home/aari/projects-thesis/humanml3d-search/requirements-linux-cpu.lock.txt",
       "sha256": "d5b40def13c041006871adf5fc9d3f0ae2f1d1985e7a563937b71e60fe67c394"
     }
-  },
-  "distinct_csv_ids": {
-    "lexical": 86,
-    "semantic": 50
   },
   "embedding_signature": "da13c1eba518fda18eee645b0028fa7aab47c44f61f036d6a92e1b021fa919fb",
   "fallback_render": {
@@ -111,39 +109,112 @@
     "view": "Root-following y-up display; all supplied frames retained"
   },
   "files": {
-    "combined_results.json": {
-      "bytes": 210350,
-      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/combined_results.json",
-      "sha256": "20500a3bbf0268c600927cc6b54443d7cd3dd02357924e21914b2d7930eb487e"
+    "lexical_gallery_manifest.json": {
+      "bytes": 43235,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_gallery_manifest.json",
+      "sha256": "d39fbddfe572d6066665cba456f3ea76973e170b323ece9fd1446cafb24c11aa"
     },
-    "gallery_manifest.json": {
-      "bytes": 54017,
-      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/gallery_manifest.json",
-      "sha256": "b412be4c66ef7a3188d80a823c5cb56fa2d0e07f127aac24685e7f5a72e350ad"
+    "lexical_matches.jsonl": {
+      "bytes": 72655,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_matches.jsonl",
+      "sha256": "decdac463c43b89693ccf00fce66f6aec51f5020b3690a76a55f52c4357f30df"
     },
     "lexical_results.csv": {
       "bytes": 21355,
-      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/lexical_results.csv",
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_results.csv",
       "sha256": "45655ba4702b08320d2ab3fc1d0de651ccf529aefcb50f428b395e9b3f32e80f"
     },
-    "review.html": {
-      "bytes": 170186,
-      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/review.html",
-      "sha256": "26c1e02f058f1f1112d9b5198e09043e3ac8b300e901ef1cc1d24e71ef5c36ef"
+    "lexical_results.json": {
+      "bytes": 56514,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_results.json",
+      "sha256": "67a4c0502837e04e7c8f58dc43ebf3d90ef2a58f2b72de95182d0c387513f1b0"
+    },
+    "lexical_review.html": {
+      "bytes": 54066,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_review.html",
+      "sha256": "622b4e26483df4e610c343da23f895865663f6e3b30c14a24d8ce181b929bea5"
+    },
+    "overlap_gallery_manifest.json": {
+      "bytes": 14696,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/overlap_gallery_manifest.json",
+      "sha256": "140085e5997ca3868322102c3f5f4aeeb8fcf304f649eda74099b0a75ffa975a"
+    },
+    "overlap_results.json": {
+      "bytes": 46944,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/overlap_results.json",
+      "sha256": "6a0618367737cbc966e622248b8b8f27635ca3b87d0a65e160f159228a0b5051"
+    },
+    "overlap_review.html": {
+      "bytes": 42425,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/overlap_review.html",
+      "sha256": "2e498bd86972098bdfdd68c66d8ca493da5857eda12f838c7d31208f49baec40"
     },
     "run_manifest.json": {
-      "bytes": 7115,
-      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/run_manifest.json",
-      "sha256": "371fd04de8aa67bc022e48d6ddc74205d9b2c2550a69aa884fe26fb36e9e30a3"
+      "bytes": 7820,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/run_manifest.json",
+      "sha256": "ef324d02c45ca0268fa7aba222f24a97a871b5c754dacafc546dc41f2f312e09"
+    },
+    "semantic_gallery_manifest.json": {
+      "bytes": 25519,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_gallery_manifest.json",
+      "sha256": "b4f635090db8978d95b93d9c207232dec27748a1cc8411bdd4d45441fe1a69a3"
+    },
+    "semantic_matches.jsonl": {
+      "bytes": 113568,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_matches.jsonl",
+      "sha256": "9fb4e859760b06f37608682627659c93a4512bafb513b21512a6b240fb47fa05"
     },
     "semantic_results.csv": {
       "bytes": 14037,
-      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/semantic_results.csv",
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_results.csv",
       "sha256": "7c98fc34cda9d33b6d4a6e27af13cf18fc7674b59a2f719da2ab734ed523271e"
+    },
+    "semantic_results.json": {
+      "bytes": 33356,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_results.json",
+      "sha256": "9ffdf3dc46161a4b613b2f7b1045096457f46afb21e1b8e2dfef59cf1f856483"
+    },
+    "semantic_review.html": {
+      "bytes": 35780,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_review.html",
+      "sha256": "3fce51c7daa0adabdb03191a4811fabca8a87e410b983e296a6b57d507aae86c"
     }
   },
-  "gallery_status": "passed",
-  "gallery_videos": 108,
+  "galleries": {
+    "lexical": {
+      "frame_count_differences": [],
+      "preview_codecs": {
+        "h264": 86
+      },
+      "preview_rates": {
+        "20/1": 86
+      },
+      "status": "passed",
+      "video_entries": 86
+    },
+    "overlap": {
+      "frame_count_differences": [],
+      "preview_codecs": {
+        "h264": 28
+      },
+      "preview_rates": {
+        "20/1": 28
+      },
+      "status": "passed",
+      "video_entries": 28
+    },
+    "semantic": {
+      "frame_count_differences": [],
+      "preview_codecs": {
+        "h264": 50
+      },
+      "preview_rates": {
+        "20/1": 50
+      },
+      "status": "passed",
+      "video_entries": 50
+    }
+  },
   "index_counts": {
     "caption_rows": 87384,
     "eligible_base_motion_ids": 14614,
@@ -159,39 +230,24 @@
     "timing_unpaired": 12
   },
   "index_signature": "802cb15816d05275bdeda3e33f87699395b7ab28bf70fc8ead5b6868c7cf8888",
-  "lexical_categories": {
-    "contextual": 30,
-    "explicit": 56
-  },
-  "preview_codecs": {
-    "h264": 108
-  },
-  "preview_frame_count_differences": [],
-  "preview_rates": {
-    "20/1": 108
-  },
-  "run_signature": "e7019ad8989c9098d751b1ddbd902645bbe938ee972c552b6deb3c00a6723da3",
-  "scope": "Recorded actual dataset run; relevance review pending. No automated test suite.",
+  "run_signature": "880932ee6d8c2bd354f4ffa896aff62b1eec39cfc3b58abdae05cd0157e86a9f",
+  "scope": "Actual all-split dataset execution with separate lexical/semantic results and their overlap. Human relevance review pending; no automated tests.",
   "search_manifest": {
     "counts": {
-      "mirror_adjusted": {
-        "lexical": 43,
-        "lexical_only": 29,
-        "overlap": 14,
-        "semantic": 25,
-        "semantic_only": 11,
-        "union": 54
+      "lexical": {
+        "base_motion_ids": 43,
+        "motion_ids": 86
       },
-      "motion_ids": {
-        "lexical": 86,
-        "lexical_only": 58,
-        "overlap": 28,
-        "semantic": 50,
-        "semantic_only": 22,
-        "union": 108
+      "overlap": {
+        "base_motion_ids": 14,
+        "motion_ids": 28
+      },
+      "semantic": {
+        "base_motion_ids": 25,
+        "motion_ids": 50
       }
     },
-    "created_at_utc": "2026-11-16T13:46:07.605563+00:00",
+    "created_at_utc": "2026-11-16T14:01:34.550404+00:00",
     "dataset_root": "/mnt/data_share/aari/HumanML3D",
     "environment": {
       "packages": {
@@ -276,29 +332,44 @@
       "snapshot_path": "/home/aari/projects-thesis/humanml3d-search/cache/models/models--sentence-transformers--all-mpnet-base-v2/snapshots/e8c3b32edf5434bc2275fc9bab85f82640a19130"
     },
     "outputs": {
-      "caption_matches.jsonl": {
-        "bytes": 186223,
-        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/caption_matches.jsonl",
-        "sha256": "a418041f3feb4491a481d6ee9cdbae68a26069baafbfb79f0b22174af499d00d"
-      },
-      "combined_results.json": {
-        "bytes": 210350,
-        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/combined_results.json",
-        "sha256": "20500a3bbf0268c600927cc6b54443d7cd3dd02357924e21914b2d7930eb487e"
+      "lexical_matches.jsonl": {
+        "bytes": 72655,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_matches.jsonl",
+        "sha256": "decdac463c43b89693ccf00fce66f6aec51f5020b3690a76a55f52c4357f30df"
       },
       "lexical_results.csv": {
         "bytes": 21355,
-        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/lexical_results.csv",
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_results.csv",
         "sha256": "45655ba4702b08320d2ab3fc1d0de651ccf529aefcb50f428b395e9b3f32e80f"
+      },
+      "lexical_results.json": {
+        "bytes": 56514,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/lexical_results.json",
+        "sha256": "67a4c0502837e04e7c8f58dc43ebf3d90ef2a58f2b72de95182d0c387513f1b0"
+      },
+      "overlap_results.json": {
+        "bytes": 46944,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/overlap_results.json",
+        "sha256": "6a0618367737cbc966e622248b8b8f27635ca3b87d0a65e160f159228a0b5051"
+      },
+      "semantic_matches.jsonl": {
+        "bytes": 113568,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_matches.jsonl",
+        "sha256": "9fb4e859760b06f37608682627659c93a4512bafb513b21512a6b240fb47fa05"
       },
       "semantic_results.csv": {
         "bytes": 14037,
-        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/semantic_results.csv",
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_results.csv",
         "sha256": "7c98fc34cda9d33b6d4a6e27af13cf18fc7674b59a2f719da2ab734ed523271e"
+      },
+      "semantic_results.json": {
+        "bytes": 33356,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/880932ee6d8c2bd3/semantic_results.json",
+        "sha256": "9ffdf3dc46161a4b613b2f7b1045096457f46afb21e1b8e2dfef59cf1f856483"
       }
     },
-    "run_signature": "e7019ad8989c9098d751b1ddbd902645bbe938ee972c552b6deb3c00a6723da3",
-    "schema_version": 1,
+    "run_signature": "880932ee6d8c2bd354f4ffa896aff62b1eec39cfc3b58abdae05cd0157e86a9f",
+    "schema_version": 2,
     "settings": {
       "activity": {
         "aliases": [
@@ -330,18 +401,19 @@
       "code_sha256": {
         "__init__.py": "da95ec81c67d9aa359bea781b06d8344b3bd5fbd10ab7633e233d791e00991c6",
         "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
-        "cli.py": "3f929441b42f7b969d65e1a29d5b13adc278732685867a1d4e9a146eeba196db",
+        "cli.py": "b8abcb82a85cc70fde68f92bf881e2a047b3893acb84a58fbb0ff2604c49f0b4",
         "common.py": "ed7e1614a6ab40ac174c2f3a1513b177892dc3901e4f3b452fc965444ee9d687",
         "embeddings.py": "806214d0e68d108b14ad475fbfcad98ac58f7688937caf43b8fb99435b36adb3",
-        "gallery.py": "9d4723e7219cd8c0e8f041084c284b9a00e88eedf2083c0dcb1917a190e7e782",
+        "gallery.py": "d410a16c99e7553a33ca816648236989044407eb5705ead377c4f3161c3c905c",
         "indexing.py": "4ce225d0001a4315aee4f2ad65677e222a71c522746ca9c2733c7b7e8f7a1426",
         "rendering.py": "76f0c35e55783eacc962c18c6a9b90f194e0b436b5437668a489ea401aabbe69",
-        "retrieval.py": "476b6a10710bd80ca2549956e52adda8fe1cac9d740c29b4fc10c0c835f51f3b"
+        "retrieval.py": "795d5269b607b702add051b794ab1383c734029698e674729df46d162386137b"
       },
       "embedding_signature": "da13c1eba518fda18eee645b0028fa7aab47c44f61f036d6a92e1b021fa919fb",
       "exercise_id": "push_up",
       "index_signature": "802cb15816d05275bdeda3e33f87699395b7ab28bf70fc8ead5b6868c7cf8888",
       "ranking": "Maximum normalized cosine over activity queries and each motion's original captions",
+      "result_schema_version": 2,
       "semantic_unit": "Distinct motion IDs; mirrored IDs can occupy separate top-k positions",
       "split": "all",
       "tie_break": "Descending score, ascending motion ID; first caption line/query wins exact ties",
@@ -350,87 +422,5 @@
     "stage": "caption_search",
     "status": "passed",
     "visual_review": "pending"
-  },
-  "search_status": "passed",
-  "semantic_rank_range": [
-    "1",
-    "50"
-  ],
-  "semantic_score_range": [
-    "0.8580412864685059",
-    "0.7913261651992798"
-  ],
-  "top_semantic": [
-    {
-      "caption": "the person does multiple push-ups",
-      "cosine_similarity": "0.8580412864685059",
-      "motion_id": "009006",
-      "query_id": "2",
-      "rank": "1"
-    },
-    {
-      "caption": "the person does multiple push-ups",
-      "cosine_similarity": "0.8580412864685059",
-      "motion_id": "M009006",
-      "query_id": "2",
-      "rank": "2"
-    },
-    {
-      "caption": "a person lays down on the floor to do a push up.",
-      "cosine_similarity": "0.8476120233535767",
-      "motion_id": "004426",
-      "query_id": "1",
-      "rank": "3"
-    },
-    {
-      "caption": "a person lays down on the floor to do a push up.",
-      "cosine_similarity": "0.8476120233535767",
-      "motion_id": "M004426",
-      "query_id": "1",
-      "rank": "4"
-    },
-    {
-      "caption": "a person is doing push-ups.",
-      "cosine_similarity": "0.8420981764793396",
-      "motion_id": "009895",
-      "query_id": "2",
-      "rank": "5"
-    },
-    {
-      "caption": "a person is doing push-ups.",
-      "cosine_similarity": "0.8420981764793396",
-      "motion_id": "M009895",
-      "query_id": "2",
-      "rank": "6"
-    },
-    {
-      "caption": "a person goes down to the floor doing push up",
-      "cosine_similarity": "0.8357943892478943",
-      "motion_id": "000384",
-      "query_id": "1",
-      "rank": "7"
-    },
-    {
-      "caption": "a person goes down to the floor doing push up",
-      "cosine_similarity": "0.8357943892478943",
-      "motion_id": "M000384",
-      "query_id": "1",
-      "rank": "8"
-    },
-    {
-      "caption": "a person's hands and feet are touching the floor and they push themselves up like doing a push-up",
-      "cosine_similarity": "0.8323632478713989",
-      "motion_id": "007130",
-      "query_id": "3",
-      "rank": "9"
-    },
-    {
-      "caption": "a person's hands and feet are touching the floor and they push themselves up like doing a push-up",
-      "cosine_similarity": "0.8323632478713989",
-      "motion_id": "M007130",
-      "query_id": "3",
-      "rank": "10"
-    }
-  ],
-  "union_records": 108
+  }
 }

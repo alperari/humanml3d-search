@@ -14,9 +14,9 @@ def parser():
     commands = result.add_subparsers(dest="command", required=True)
     for name, help_text in (("index", "Index original captions, split membership and motion availability"),
                             ("model", "Download/check the exact MPNet model snapshot"),
-                            ("search", "Run lexical search, semantic top-k and their motion union"),
-                            ("visualize", "Build a local video gallery for a completed search"),
-                            ("run", "Index, search and create a review gallery")):
+                            ("search", "Run lexical search and semantic top-k, and report their overlap"),
+                            ("visualize", "Build lexical, semantic and overlap video galleries"),
+                            ("run", "Index, search, report overlap and create review galleries")):
         command = commands.add_parser(name, help=help_text)
         command.add_argument("--config", type=Path, default=Path("configs/local.yml"))
         if name in ("index", "run"):
@@ -28,6 +28,7 @@ def parser():
             command.add_argument("--split", choices=("all", "train", "val", "test"), default="all")
         if name == "visualize":
             command.add_argument("--run-dir", type=Path, required=True, help="Directory containing run_manifest.json")
+            command.add_argument("--method", choices=("lexical", "semantic", "overlap"), help="Build only this selection's gallery; default builds each separately")
         if name in ("visualize", "run"):
             command.add_argument("--copy-videos", action="store_true", help="Copy preview MP4s for a portable gallery; default uses symlinks")
     return result
@@ -54,7 +55,8 @@ def main(argv=None):
         if args.command in ("visualize", "run"):
             from .gallery import visualize
 
-            visualize(config, args.run_dir if args.command == "visualize" else directory, copy_videos=args.copy_videos)
+            visualize(config, args.run_dir if args.command == "visualize" else directory, copy_videos=args.copy_videos,
+                      method=args.method if args.command == "visualize" else None)
         return 0
     except KeyboardInterrupt:
         print("Interrupted. Re-run the command to reuse completed caches.", file=sys.stderr)
