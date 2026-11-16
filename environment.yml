@@ -1,0 +1,14 @@
+# Create from the repository root: conda env create -f environment.yml
+name: humanml3d-search
+channels:
+  - defaults
+dependencies:
+  - python=3.11.18
+  - pip=25.2
+  - setuptools=80.9.0
+  - wheel=0.45.1
+  # The GPL variant includes the libx264 encoder, including for fallback renders.
+  - conda-forge::ffmpeg=6.*=gpl_*
+  - pip:
+      - -r requirements-linux-cpu.lock.txt
+      - -e .

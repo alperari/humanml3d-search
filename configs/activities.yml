@@ -1,0 +1,21 @@
+activities:
+  push_up:
+    label: Push-up
+    aliases:
+      - push-up
+      - push up
+      - pushup
+      - press-up
+      - press up
+      - pressup
+    context_rules:
+      - id: prone_body_lower_raise
+        all:
+          - '\b(floor|ground|prone|face[- ]down)\b'
+          - '\b(hands?|palms?|arms?)\b'
+          - '\b(lower\w*|rais\w*|bend\w*|straighten\w*|push\w*)\b'
+          - '\b(body|chest|torso)\b'
+    semantic_queries:
+      - A person performs push-ups on the floor.
+      - A person performs repeated push-ups on the floor, lowering and raising their chest while supporting their body with their hands.
+      - A person does press-ups, bending and straightening their arms to lift and lower their body while facing the floor.

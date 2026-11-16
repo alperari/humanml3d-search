@@ -1,0 +1,436 @@
+{
+  "counts": {
+    "mirror_adjusted": {
+      "lexical": 43,
+      "lexical_only": 29,
+      "overlap": 14,
+      "semantic": 25,
+      "semantic_only": 11,
+      "union": 54
+    },
+    "motion_ids": {
+      "lexical": 86,
+      "lexical_only": 58,
+      "overlap": 28,
+      "semantic": 50,
+      "semantic_only": 22,
+      "union": 108
+    }
+  },
+  "csv_rows": {
+    "lexical": 86,
+    "semantic": 50
+  },
+  "dependency_locks": {
+    "conda-linux-64.lock.txt": {
+      "bytes": 11379,
+      "path": "/home/aari/projects-thesis/humanml3d-search/conda-linux-64.lock.txt",
+      "sha256": "037020cb7e2b504b137e0a3dba4b407446b36798389b3c854225c8b836f8b760"
+    },
+    "requirements-linux-cpu.lock.txt": {
+      "bytes": 798,
+      "path": "/home/aari/projects-thesis/humanml3d-search/requirements-linux-cpu.lock.txt",
+      "sha256": "d5b40def13c041006871adf5fc9d3f0ae2f1d1985e7a563937b71e60fe67c394"
+    }
+  },
+  "distinct_csv_ids": {
+    "lexical": 86,
+    "semantic": 50
+  },
+  "embedding_signature": "da13c1eba518fda18eee645b0028fa7aab47c44f61f036d6a92e1b021fa919fb",
+  "fallback_render": {
+    "chains": [
+      [
+        0,
+        2,
+        5,
+        8,
+        11
+      ],
+      [
+        0,
+        1,
+        4,
+        7,
+        10
+      ],
+      [
+        0,
+        3,
+        6,
+        9,
+        12,
+        15
+      ],
+      [
+        9,
+        14,
+        17,
+        19,
+        21
+      ],
+      [
+        9,
+        13,
+        16,
+        18,
+        20
+      ]
+    ],
+    "fps": 20,
+    "frames": 199,
+    "input": {
+      "bytes": 52664,
+      "path": "/mnt/data_share/aari/HumanML3D/new_joints/000384.npy",
+      "sha256": "71190ecda409694ecdbef55384040370240032fbcd86f013255c72fd49339809"
+    },
+    "output": {
+      "bytes": 112979,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/render_review/000384.mp4",
+      "sha256": "948eb8848a12d8d3a4685395d1134803c51d9cf3fc3f66d9dc61e498e34eb5a9"
+    },
+    "probe": {
+      "avg_frame_rate": "20/1",
+      "codec_name": "h264",
+      "height": 700,
+      "nb_read_frames": "199",
+      "pix_fmt": "yuv420p",
+      "width": 700
+    },
+    "source": "rendered_joints",
+    "tools": {
+      "ffmpeg": {
+        "path": "/home/aari/miniconda3/envs/humanml3d-search/bin/ffmpeg",
+        "version": "ffmpeg version 6.1.2 Copyright (c) 2000-2024 the FFmpeg developers"
+      },
+      "ffprobe": {
+        "path": "/home/aari/miniconda3/envs/humanml3d-search/bin/ffprobe",
+        "version": "ffprobe version 6.1.2 Copyright (c) 2007-2024 the FFmpeg developers"
+      }
+    },
+    "view": "Root-following y-up display; all supplied frames retained"
+  },
+  "files": {
+    "combined_results.json": {
+      "bytes": 210350,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/combined_results.json",
+      "sha256": "20500a3bbf0268c600927cc6b54443d7cd3dd02357924e21914b2d7930eb487e"
+    },
+    "gallery_manifest.json": {
+      "bytes": 54017,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/gallery_manifest.json",
+      "sha256": "b412be4c66ef7a3188d80a823c5cb56fa2d0e07f127aac24685e7f5a72e350ad"
+    },
+    "lexical_results.csv": {
+      "bytes": 21355,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/lexical_results.csv",
+      "sha256": "45655ba4702b08320d2ab3fc1d0de651ccf529aefcb50f428b395e9b3f32e80f"
+    },
+    "review.html": {
+      "bytes": 170186,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/review.html",
+      "sha256": "26c1e02f058f1f1112d9b5198e09043e3ac8b300e901ef1cc1d24e71ef5c36ef"
+    },
+    "run_manifest.json": {
+      "bytes": 7115,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/run_manifest.json",
+      "sha256": "371fd04de8aa67bc022e48d6ddc74205d9b2c2550a69aa884fe26fb36e9e30a3"
+    },
+    "semantic_results.csv": {
+      "bytes": 14037,
+      "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/semantic_results.csv",
+      "sha256": "7c98fc34cda9d33b6d4a6e27af13cf18fc7674b59a2f719da2ab734ed523271e"
+    }
+  },
+  "gallery_status": "passed",
+  "gallery_videos": 108,
+  "index_counts": {
+    "caption_rows": 87384,
+    "eligible_base_motion_ids": 14614,
+    "eligible_caption_rows": 87372,
+    "eligible_motion_ids": 29228,
+    "excluded_motion_ids": 4,
+    "singleton_time_squeezed_motion_ids": 4,
+    "text_files": 29232,
+    "timing_clipped": 1010,
+    "timing_full_clip": 84328,
+    "timing_invalid": 8,
+    "timing_segment": 2026,
+    "timing_unpaired": 12
+  },
+  "index_signature": "802cb15816d05275bdeda3e33f87699395b7ab28bf70fc8ead5b6868c7cf8888",
+  "lexical_categories": {
+    "contextual": 30,
+    "explicit": 56
+  },
+  "preview_codecs": {
+    "h264": 108
+  },
+  "preview_frame_count_differences": [],
+  "preview_rates": {
+    "20/1": 108
+  },
+  "run_signature": "e7019ad8989c9098d751b1ddbd902645bbe938ee972c552b6deb3c00a6723da3",
+  "scope": "Recorded actual dataset run; relevance review pending. No automated test suite.",
+  "search_manifest": {
+    "counts": {
+      "mirror_adjusted": {
+        "lexical": 43,
+        "lexical_only": 29,
+        "overlap": 14,
+        "semantic": 25,
+        "semantic_only": 11,
+        "union": 54
+      },
+      "motion_ids": {
+        "lexical": 86,
+        "lexical_only": 58,
+        "overlap": 28,
+        "semantic": 50,
+        "semantic_only": 22,
+        "union": 108
+      }
+    },
+    "created_at_utc": "2026-11-16T13:46:07.605563+00:00",
+    "dataset_root": "/mnt/data_share/aari/HumanML3D",
+    "environment": {
+      "packages": {
+        "PyYAML": "6.0.2",
+        "huggingface-hub": "0.36.0",
+        "matplotlib": "3.9.4",
+        "numpy": "2.0.2",
+        "safetensors": "0.6.2",
+        "scipy": "1.13.1",
+        "sentence-transformers": "5.1.2",
+        "tokenizers": "0.22.1",
+        "torch": "2.8.0+cpu",
+        "transformers": "4.57.1"
+      },
+      "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.39",
+      "python": "3.11.18"
+    },
+    "inputs": {
+      "activities": {
+        "bytes": 746,
+        "path": "/home/aari/projects-thesis/humanml3d-search/configs/activities.yml",
+        "sha256": "3c5172e6a96a1e804177c1d15666a37b964bd9d758bfddbfe266ee440f468c33"
+      },
+      "embedding_manifest": {
+        "bytes": 3120,
+        "path": "/home/aari/projects-thesis/humanml3d-search/cache/embeddings/da13c1eba518fda18eee645b0028fa7aab47c44f61f036d6a92e1b021fa919fb/manifest.json",
+        "sha256": "bce1c88c0f4251bc39c102737752dbf6903d00b5cdc1a8d79bc4e2789b75576d"
+      },
+      "index_manifest": {
+        "bytes": 5635,
+        "path": "/home/aari/projects-thesis/humanml3d-search/cache/index.json",
+        "sha256": "77c8da5dd440b91b1ab34a5869545da3d5414fc3d1fcbe4af8721213b19956ff"
+      }
+    },
+    "model": {
+      "created_at_utc": "2026-11-16T13:37:31.964791+00:00",
+      "files": {
+        "1_Pooling/config.json": {
+          "bytes": 190,
+          "sha256": "a37f83ada23e7887be6b88f4998927dbeac0038af301553c7cd5461413bf1a56"
+        },
+        "config.json": {
+          "bytes": 571,
+          "sha256": "d46a3e04ded82bba22528424480697d394eeda6a27484e08c5bb2bdf5906cfa0"
+        },
+        "config_sentence_transformers.json": {
+          "bytes": 116,
+          "sha256": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3"
+        },
+        "model.safetensors": {
+          "bytes": 437971872,
+          "sha256": "78c0197b6159d92658e319bc1d72e4c73a9a03dd03815e70e555c5ef05615658"
+        },
+        "modules.json": {
+          "bytes": 349,
+          "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+        },
+        "sentence_bert_config.json": {
+          "bytes": 53,
+          "sha256": "cabfacded9272091a06ff595a46ef027a76ddf4ac9e77d0fcf11c605748f1667"
+        },
+        "special_tokens_map.json": {
+          "bytes": 239,
+          "sha256": "9ef40e9c160511bf3f46ceb71f1471dafa1e9473d5120bb816c36b2efa75f8ba"
+        },
+        "tokenizer.json": {
+          "bytes": 466021,
+          "sha256": "b8be2c30ba5dd723a6d5ee26d013da103d5408d92ddcb23747622f9e48f1d842"
+        },
+        "tokenizer_config.json": {
+          "bytes": 363,
+          "sha256": "67f2ff7e223518e729869bb3a70f0caf8368fe549383fc11cfe2dfb42fffc268"
+        },
+        "vocab.txt": {
+          "bytes": 231536,
+          "sha256": "dbd90cb94e2247bd4d4ccaecbf616d2290e66691d7d5e5bb81f063c2d0649ada"
+        }
+      },
+      "model_signature": "aac4a4b3d9744eaf5eb2588546fbd622448a2f56a7a8b8a49bcd98a474acf288",
+      "name": "sentence-transformers/all-mpnet-base-v2",
+      "revision": "e8c3b32edf5434bc2275fc9bab85f82640a19130",
+      "snapshot_path": "/home/aari/projects-thesis/humanml3d-search/cache/models/models--sentence-transformers--all-mpnet-base-v2/snapshots/e8c3b32edf5434bc2275fc9bab85f82640a19130"
+    },
+    "outputs": {
+      "caption_matches.jsonl": {
+        "bytes": 186223,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/caption_matches.jsonl",
+        "sha256": "a418041f3feb4491a481d6ee9cdbae68a26069baafbfb79f0b22174af499d00d"
+      },
+      "combined_results.json": {
+        "bytes": 210350,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/combined_results.json",
+        "sha256": "20500a3bbf0268c600927cc6b54443d7cd3dd02357924e21914b2d7930eb487e"
+      },
+      "lexical_results.csv": {
+        "bytes": 21355,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/lexical_results.csv",
+        "sha256": "45655ba4702b08320d2ab3fc1d0de651ccf529aefcb50f428b395e9b3f32e80f"
+      },
+      "semantic_results.csv": {
+        "bytes": 14037,
+        "path": "/home/aari/projects-thesis/humanml3d-search/outputs/push_up/e7019ad8989c9098/semantic_results.csv",
+        "sha256": "7c98fc34cda9d33b6d4a6e27af13cf18fc7674b59a2f719da2ab734ed523271e"
+      }
+    },
+    "run_signature": "e7019ad8989c9098d751b1ddbd902645bbe938ee972c552b6deb3c00a6723da3",
+    "schema_version": 1,
+    "settings": {
+      "activity": {
+        "aliases": [
+          "push-up",
+          "push up",
+          "pushup",
+          "press-up",
+          "press up",
+          "pressup"
+        ],
+        "context_rules": [
+          {
+            "all": [
+              "\\b(floor|ground|prone|face[- ]down)\\b",
+              "\\b(hands?|palms?|arms?)\\b",
+              "\\b(lower\\w*|rais\\w*|bend\\w*|straighten\\w*|push\\w*)\\b",
+              "\\b(body|chest|torso)\\b"
+            ],
+            "id": "prone_body_lower_raise"
+          }
+        ],
+        "label": "Push-up",
+        "semantic_queries": [
+          "A person performs push-ups on the floor.",
+          "A person performs repeated push-ups on the floor, lowering and raising their chest while supporting their body with their hands.",
+          "A person does press-ups, bending and straightening their arms to lift and lower their body while facing the floor."
+        ]
+      },
+      "code_sha256": {
+        "__init__.py": "da95ec81c67d9aa359bea781b06d8344b3bd5fbd10ab7633e233d791e00991c6",
+        "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "cli.py": "3f929441b42f7b969d65e1a29d5b13adc278732685867a1d4e9a146eeba196db",
+        "common.py": "ed7e1614a6ab40ac174c2f3a1513b177892dc3901e4f3b452fc965444ee9d687",
+        "embeddings.py": "806214d0e68d108b14ad475fbfcad98ac58f7688937caf43b8fb99435b36adb3",
+        "gallery.py": "9d4723e7219cd8c0e8f041084c284b9a00e88eedf2083c0dcb1917a190e7e782",
+        "indexing.py": "4ce225d0001a4315aee4f2ad65677e222a71c522746ca9c2733c7b7e8f7a1426",
+        "rendering.py": "76f0c35e55783eacc962c18c6a9b90f194e0b436b5437668a489ea401aabbe69",
+        "retrieval.py": "476b6a10710bd80ca2549956e52adda8fe1cac9d740c29b4fc10c0c835f51f3b"
+      },
+      "embedding_signature": "da13c1eba518fda18eee645b0028fa7aab47c44f61f036d6a92e1b021fa919fb",
+      "exercise_id": "push_up",
+      "index_signature": "802cb15816d05275bdeda3e33f87699395b7ab28bf70fc8ead5b6868c7cf8888",
+      "ranking": "Maximum normalized cosine over activity queries and each motion's original captions",
+      "semantic_unit": "Distinct motion IDs; mirrored IDs can occupy separate top-k positions",
+      "split": "all",
+      "tie_break": "Descending score, ascending motion ID; first caption line/query wins exact ties",
+      "top_k": 50
+    },
+    "stage": "caption_search",
+    "status": "passed",
+    "visual_review": "pending"
+  },
+  "search_status": "passed",
+  "semantic_rank_range": [
+    "1",
+    "50"
+  ],
+  "semantic_score_range": [
+    "0.8580412864685059",
+    "0.7913261651992798"
+  ],
+  "top_semantic": [
+    {
+      "caption": "the person does multiple push-ups",
+      "cosine_similarity": "0.8580412864685059",
+      "motion_id": "009006",
+      "query_id": "2",
+      "rank": "1"
+    },
+    {
+      "caption": "the person does multiple push-ups",
+      "cosine_similarity": "0.8580412864685059",
+      "motion_id": "M009006",
+      "query_id": "2",
+      "rank": "2"
+    },
+    {
+      "caption": "a person lays down on the floor to do a push up.",
+      "cosine_similarity": "0.8476120233535767",
+      "motion_id": "004426",
+      "query_id": "1",
+      "rank": "3"
+    },
+    {
+      "caption": "a person lays down on the floor to do a push up.",
+      "cosine_similarity": "0.8476120233535767",
+      "motion_id": "M004426",
+      "query_id": "1",
+      "rank": "4"
+    },
+    {
+      "caption": "a person is doing push-ups.",
+      "cosine_similarity": "0.8420981764793396",
+      "motion_id": "009895",
+      "query_id": "2",
+      "rank": "5"
+    },
+    {
+      "caption": "a person is doing push-ups.",
+      "cosine_similarity": "0.8420981764793396",
+      "motion_id": "M009895",
+      "query_id": "2",
+      "rank": "6"
+    },
+    {
+      "caption": "a person goes down to the floor doing push up",
+      "cosine_similarity": "0.8357943892478943",
+      "motion_id": "000384",
+      "query_id": "1",
+      "rank": "7"
+    },
+    {
+      "caption": "a person goes down to the floor doing push up",
+      "cosine_similarity": "0.8357943892478943",
+      "motion_id": "M000384",
+      "query_id": "1",
+      "rank": "8"
+    },
+    {
+      "caption": "a person's hands and feet are touching the floor and they push themselves up like doing a push-up",
+      "cosine_similarity": "0.8323632478713989",
+      "motion_id": "007130",
+      "query_id": "3",
+      "rank": "9"
+    },
+    {
+      "caption": "a person's hands and feet are touching the floor and they push themselves up like doing a push-up",
+      "cosine_similarity": "0.8323632478713989",
+      "motion_id": "M007130",
+      "query_id": "3",
+      "rank": "10"
+    }
+  ],
+  "union_records": 108
+}

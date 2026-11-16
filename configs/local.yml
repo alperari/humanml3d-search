@@ -1,0 +1,12 @@
+dataset_root: /home/aari/data_share/HumanML3D
+cache_root: ../cache
+output_root: ../outputs
+activities_file: activities.yml
+model:
+  name: sentence-transformers/all-mpnet-base-v2
+  revision: e8c3b32edf5434bc2275fc9bab85f82640a19130
+  device: cpu
+  batch_size: 32
+  threads: 8
+index_workers: 12
+top_k: 50
